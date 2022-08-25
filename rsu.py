@@ -426,7 +426,6 @@ class Main:
 		print("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -")
 		print("\033[1;37mNOTE : Approval LIKE FB PAGE ")
 		print("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ")
-def Subscraption():
 	key1=open('/data/data/com.termux/files/usr/bin/.mrahsan-cov', 'r').read()
 	clear()
 	print(logo)
