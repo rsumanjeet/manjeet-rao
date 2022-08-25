@@ -394,15 +394,14 @@ logo = """
  
     
 
-888    d8P   888       888    8888888b.        
-888   d8P    888       888    888   "Y88b       
-888  d8P     888       888    888     888           
-888d88K      8888888888888    888     888    
-8888888b     888       888    888     888      
-888  Y88b    888.      888    888     888      
-888   Y88b   888       888    888  . d88P       
-888    Y88b  888       888.   8888888P" 302
-                                                                               
+   888    d8P   888       888    8888888b.        
+   888   d8P    888       888    888   "Y88b       
+   888  d8P     888       888    888     888           
+   888d88K      8888888888888    888     888    
+   8888888b     888       888    888     888      
+   888  Y88b    888.      888    888     888      
+   888   Y88b   888       888    888  . d88P       
+   888    Y88b  888       888.   8888888P" 302                                                                             
 \x1b[1;97m--------------------------------------------------
 \33[1;41mKHD-302 X RSU BRAND REAL FATHER OF HITTLER\33[0m
 \x1b[1;97m--------------------------------------------------
@@ -413,7 +412,6 @@ logo = """
 \x1b[1;97m[+] VERSION        :\x1b[1;97m 0.1  \x1b[1;97m          
 \x1b[1;97m--------------------------------------------------
 """
- 
 class Main:
 	def __init__(self):
 		self.id = []
@@ -426,38 +424,30 @@ class Main:
 		print("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -")
 		print("\033[1;37mNOTE : Approval LIKE FB PAGE ")
 		print("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ")
-	key1=open('/data/data/com.termux/files/usr/bin/.mrahsan-cov', 'r').read()
-	clear()
-	print(logo)
-	r1=requests.get("https://raw.githubusercontent.com/rsumanjeet/manjeet-rao/main/aproval.txt").text
-	if key1 in r1:
-		os.system('clear')
-		print(logo)
-		Main()
-	else:
-		os.system("clear")
-		print(logo)
-		print("\t \033[1;32m First Get Approvel\033[1;37m ")
-		time.sleep(1)
-		os.system("clear")
-		print(logo)
-		print ("")
-		print(" \033[1;32m AHAD Toll Paid You Need Get Approved First\033[1;37m\n")
-		print(" \033[1;32m Note : Paid Tolls Free  HA JANI LOG \033[1;37m")
-		print ("")
-		print(" Your Key is Not Approved ")
+		
+		
 		print("")
-		print(" Copy And Send Key To Admin")
-		print ("")
-		print (" Your Key : "+ak+khd302+key1)
-		print ("")
-		name = input(" Your Name : ")
-		print ("")
-		input(" Press Enter To Send Key")
-		time.sleep(3.5)
-		tks = 'Dear%20Admin,%20Please%20Approved%20My%20Key%20To%20Premium%20%20Thanks%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20My%20Name%20:%20'+name+'%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20My%20%20Key%20%20:%20'+ak+ahsan+''+key1
-		os.system('am start https://wa.me/+923185778830?text=' + tks)
-		Subscraption()        
+		print("\033[1;37m [1] FIRST LIKE PAGE   ")
+		print("\033[1;37m [2] EXIT")
+		print("")
+		baloch = input("\n\033[1;37m  Choose : \033[1;32m")
+		if baloch in ["", " "]:
+			exit()
+		elif baloch in ["2", "02"]:
+			print("    Thanks♥️")
+			exit() 
+		elif baloch in ["1", "01"]:
+			os.system("xdg-open https://m.facebook.com/khdxrsubrand/ ")
+			print("")
+			time.sleep(3.0)
+			print("\033[1;37m    CHEKING APROVAL ")
+			print("")
+			input("\n\033[1;37m Type PAGE Name \033[1;37m")
+			time.sleep(3.1)
+			print("")
+			print("\033[1;32m ASLAM O ALIKUM")
+			time.sleep(3.0)
+			os.system("clear")
 		print(logo)
 		print(" [+]CLONING MENU")
 		print("\033[1;37m- - - - - - - - - - - - - - - - - - - - - - - - - - -")
