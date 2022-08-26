@@ -226,7 +226,7 @@ def setting():
 						coeg.submit(apiiii, uid, fii)
 				exit()
 
-elif mrbaloch in ["3","03"]:
+if mrbaloch in ["3","03"]:
 		print(f"{B} \ \33[0;96m[✓] Apply Cp Detector {P}Y/t")
 		_start_=input(f"{P}\   Choose : {P}")
 		if _start_ in ["t","T"]:
@@ -255,7 +255,7 @@ elif mrbaloch in ["3","03"]:
 						coeg.submit(apiiii, uid, fii)
 				exit()
 				
-	elif mrbaloch in ["2","02"]:
+elif  mrbaloch in ["2","02"]:
 		print(f"{B} \ \33[0;96m[✓] Apply Cp Detector {P}Y/t")
 		_start_=input(f"{P}\   Choose : {P}")
 		if _start_ in ["t","T"]:
