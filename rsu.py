@@ -282,7 +282,7 @@ def name2():
 		for yuzong in id2:
 			idf,nmf = yuzong.split('|')[0],yuzong.split('|')[1].lower()
 			frs = nmf.split(' ')[0]
-			pwv = (nmf)
+			pwv = [nmf]
 			if len(nmf)<6:
 				if len(frs)<3:
 					pass
