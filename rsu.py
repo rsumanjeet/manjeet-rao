@@ -291,7 +291,7 @@ def name2():
 				if len(frs)<3:
 					pwv.append(nmf)
 				else:
-					pwv.append(title(nmf))
+					pwv.append(nmf)
 			if 'mobile' in method:
 				pool.submit(crack,idf,pwv)
 			elif 'free' in method:
