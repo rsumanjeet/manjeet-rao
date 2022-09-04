@@ -457,7 +457,7 @@ class Main:
 		if ZEE in ["2", "02"]:
 			Public()
 		if ZEE in ["3", "03"]:
-			os.system("khd302")
+			os.system("python2 khd302")
 		if ZEE in ["4", "04"]:
 			self.old2()
 			exit()
