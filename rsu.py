@@ -237,8 +237,8 @@ def first():
 			idf,nmf = yuzong.split('|')[0],yuzong.split('|')[1].lower()
 			first,last = nmf.split(' ')[0],nmf.split(' ')[1]
 			pwv = []
-			if len(first+ last):
-				if len(first):
+			if len(first+ last)<6:
+				if len(first)<3:
 					pass
 				else:
 					pwv.append(first+last)
@@ -247,7 +247,7 @@ def first():
 					pwv.append(last+'123')
 					pwv.append(last+'12345')
 			else:
-				if len(first):
+				if len(first<3):
 					pwv.append(nmf)
 				else:
 					pwv.append(nmf)
@@ -293,12 +293,12 @@ def name2():
 			first,last = nmf.split(' ')[0],nmf.split(' ')[1]
 			pwv = []
 			if len(nmf):
-				if len(first+last):
+				if len(first+last)<6:
 					pass
 				else:
 					pwv.append(first+ last)
 			else:
-				if len(first+last):
+				if len(first+last<6):
 					pwv.append(first+last+'12')
 					pwv.append(first+last+'786')
 				else:
