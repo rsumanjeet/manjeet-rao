@@ -243,7 +243,7 @@ def first():
 					pwv.append(first+'123')
 					pwv.append(first+'12345')
 			else:
-				if len(frs)<3:
+				if len(first)<3:
 					pwv.append(nmf)
 				else:
 					pwv.append(nmf)
@@ -418,7 +418,7 @@ class Main:
 		os.system("clear")
 		print(logo)
 		print("")
-		print("- - - - - - - - - - - - - - - - - - - - - - - - - - - - -")
+		print("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -")
 		print("\033[1;37mNOTE : FOR APROVAL LIKE FB PAGE ")
 		print("- - - - - - - - - - - - - - - - - - - - - - - - - - - - -")	
 		
