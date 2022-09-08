@@ -448,23 +448,7 @@ class Main:
 			time.sleep(3.0)
 			print("\033[1;37m    CHEKING APROVAL ")
 			print("")
-			CorrectUsername = 'KHD302'
-			CorrectPassword = 'KHD302'
-			os.system('clear')
-			loop = 'true'
-			while (loop == 'true'):
-				username = raw_input('\033[1;91mENTER KEY :\n\033[1;93m ')
-				if (username == CorrectUsername):
-					print ('\033[1;92m Logged in successfully as ')
-					time.sleep(1)
-					os.system('xdg-open https://m.facebook.com/khdxrsubrand')
-					os.system('clear')
-					loop = 'false'
-			else:
-				print ('\033[1;93m ENTER KEY IS RONG CONTECT ON PAGE!')
-				os.system('xdg-open https://m.facebook.com/khdxrsubrand')
-				os.system('clear')
-			done = False
+			input("\n\033[1;37m Type PAGE Name \033[1;37m")
 			time.sleep(3.1)
 			print("")
 			print("\033[1;32m ASLAM O ALIKUM")
