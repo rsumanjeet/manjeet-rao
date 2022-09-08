@@ -114,8 +114,6 @@ def menu():
     print(51*'-')
     print
     jalan ('\x1b[1;96m[1] START Random Number Cloning ')
-    print
-    print
     print(51*'-')
     action()
 def action():
