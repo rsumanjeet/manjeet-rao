@@ -286,7 +286,6 @@ def name():
 				pool.submit(self.__metode__, idf, pwv, "mbasic.facebook.com")
 			except:
 				pass
-	hasil(ok,cp)
 def name2():
 	clear()
 	print(logo);print( '\n- - - - - - - - - - - - - - - - - - - - - - - - - - -\n [!] OK Result Saved To : \033[1;92mOK.txt/%s\033[1;97m\n [!] CP Result Saved To : \033[1;91mCP.txt/%s\033[1;97m\n- - - - - - - - - - - - - - - - - - - - - - - - - - -\n [!] \033[1;96m~Use Flight Mode 5 Second After Every 10 mint~\033[1;0m\n- - - - - - - - - - - - - - - - - - - - - - - - - - -\n'%(okc,cpc))
